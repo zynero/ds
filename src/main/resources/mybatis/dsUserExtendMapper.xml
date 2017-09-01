@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.singleMan.dao.dsUserExtendMapper">
+  <resultMap id="BaseResultMap" type="com.singleMan.model.dsUserExtend">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="vip_level" jdbcType="BIT" property="vipLevel" />
+    <result column="vip_start_time" jdbcType="TIMESTAMP" property="vipStartTime" />
+    <result column="vip_end_time" jdbcType="TIMESTAMP" property="vipEndTime" />
+    <result column="viewers" jdbcType="INTEGER" property="viewers" />
+    <result column="anony_nickname" jdbcType="VARCHAR" property="anonyNickname" />
+    <result column="anony_ambiguity" jdbcType="REAL" property="anonyAmbiguity" />
+    <result column="error_login_times" jdbcType="BIT" property="errorLoginTimes" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="tip_off_times" jdbcType="INTEGER" property="tipOffTimes" />
+    <result column="share_times" jdbcType="INTEGER" property="shareTimes" />
+    <result column="vip_search_forbidden" jdbcType="BIT" property="vipSearchForbidden" />
+    <result column="vip_at_forbidden" jdbcType="BIT" property="vipAtForbidden" />
+    <result column="vip_share_forbidden" jdbcType="BIT" property="vipShareForbidden" />
+    <result column="vip_dynamic_homepage" jdbcType="BIT" property="vipDynamicHomepage" />
+    <result column="gender_visible" jdbcType="BIT" property="genderVisible" />
+    <result column="online" jdbcType="BIT" property="online" />
+    <result column="vip_online_visible" jdbcType="BIT" property="vipOnlineVisible" />
+    <result column="lock_expired_time" jdbcType="TIMESTAMP" property="lockExpiredTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, uid, email, location, vip_level, vip_start_time, vip_end_time, viewers, anony_nickname, 
+    anony_ambiguity, error_login_times, last_login_time, tip_off_times, share_times, 
+    vip_search_forbidden, vip_at_forbidden, vip_share_forbidden, vip_dynamic_homepage, 
+    gender_visible, online, vip_online_visible, lock_expired_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ds_user_extend
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ds_user_extend
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.singleMan.model.dsUserExtend">
+    insert into ds_user_extend (id, uid, email, 
+      location, vip_level, vip_start_time, 
+      vip_end_time, viewers, anony_nickname, 
+      anony_ambiguity, error_login_times, last_login_time, 
+      tip_off_times, share_times, vip_search_forbidden, 
+      vip_at_forbidden, vip_share_forbidden, vip_dynamic_homepage, 
+      gender_visible, online, vip_online_visible, 
+      lock_expired_time)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, 
+      #{location,jdbcType=VARCHAR}, #{vipLevel,jdbcType=BIT}, #{vipStartTime,jdbcType=TIMESTAMP}, 
+      #{vipEndTime,jdbcType=TIMESTAMP}, #{viewers,jdbcType=INTEGER}, #{anonyNickname,jdbcType=VARCHAR}, 
+      #{anonyAmbiguity,jdbcType=REAL}, #{errorLoginTimes,jdbcType=BIT}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
+      #{tipOffTimes,jdbcType=INTEGER}, #{shareTimes,jdbcType=INTEGER}, #{vipSearchForbidden,jdbcType=BIT}, 
+      #{vipAtForbidden,jdbcType=BIT}, #{vipShareForbidden,jdbcType=BIT}, #{vipDynamicHomepage,jdbcType=BIT}, 
+      #{genderVisible,jdbcType=BIT}, #{online,jdbcType=BIT}, #{vipOnlineVisible,jdbcType=BIT}, 
+      #{lockExpiredTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.singleMan.model.dsUserExtend">
+    insert into ds_user_extend
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="location != null">
+        location,
+      </if>
+      <if test="vipLevel != null">
+        vip_level,
+      </if>
+      <if test="vipStartTime != null">
+        vip_start_time,
+      </if>
+      <if test="vipEndTime != null">
+        vip_end_time,
+      </if>
+      <if test="viewers != null">
+        viewers,
+      </if>
+      <if test="anonyNickname != null">
+        anony_nickname,
+      </if>
+      <if test="anonyAmbiguity != null">
+        anony_ambiguity,
+      </if>
+      <if test="errorLoginTimes != null">
+        error_login_times,
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time,
+      </if>
+      <if test="tipOffTimes != null">
+        tip_off_times,
+      </if>
+      <if test="shareTimes != null">
+        share_times,
+      </if>
+      <if test="vipSearchForbidden != null">
+        vip_search_forbidden,
+      </if>
+      <if test="vipAtForbidden != null">
+        vip_at_forbidden,
+      </if>
+      <if test="vipShareForbidden != null">
+        vip_share_forbidden,
+      </if>
+      <if test="vipDynamicHomepage != null">
+        vip_dynamic_homepage,
+      </if>
+      <if test="genderVisible != null">
+        gender_visible,
+      </if>
+      <if test="online != null">
+        online,
+      </if>
+      <if test="vipOnlineVisible != null">
+        vip_online_visible,
+      </if>
+      <if test="lockExpiredTime != null">
+        lock_expired_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="vipLevel != null">
+        #{vipLevel,jdbcType=BIT},
+      </if>
+      <if test="vipStartTime != null">
+        #{vipStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vipEndTime != null">
+        #{vipEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="viewers != null">
+        #{viewers,jdbcType=INTEGER},
+      </if>
+      <if test="anonyNickname != null">
+        #{anonyNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="anonyAmbiguity != null">
+        #{anonyAmbiguity,jdbcType=REAL},
+      </if>
+      <if test="errorLoginTimes != null">
+        #{errorLoginTimes,jdbcType=BIT},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tipOffTimes != null">
+        #{tipOffTimes,jdbcType=INTEGER},
+      </if>
+      <if test="shareTimes != null">
+        #{shareTimes,jdbcType=INTEGER},
+      </if>
+      <if test="vipSearchForbidden != null">
+        #{vipSearchForbidden,jdbcType=BIT},
+      </if>
+      <if test="vipAtForbidden != null">
+        #{vipAtForbidden,jdbcType=BIT},
+      </if>
+      <if test="vipShareForbidden != null">
+        #{vipShareForbidden,jdbcType=BIT},
+      </if>
+      <if test="vipDynamicHomepage != null">
+        #{vipDynamicHomepage,jdbcType=BIT},
+      </if>
+      <if test="genderVisible != null">
+        #{genderVisible,jdbcType=BIT},
+      </if>
+      <if test="online != null">
+        #{online,jdbcType=BIT},
+      </if>
+      <if test="vipOnlineVisible != null">
+        #{vipOnlineVisible,jdbcType=BIT},
+      </if>
+      <if test="lockExpiredTime != null">
+        #{lockExpiredTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.singleMan.model.dsUserExtend">
+    update ds_user_extend
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="vipLevel != null">
+        vip_level = #{vipLevel,jdbcType=BIT},
+      </if>
+      <if test="vipStartTime != null">
+        vip_start_time = #{vipStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vipEndTime != null">
+        vip_end_time = #{vipEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="viewers != null">
+        viewers = #{viewers,jdbcType=INTEGER},
+      </if>
+      <if test="anonyNickname != null">
+        anony_nickname = #{anonyNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="anonyAmbiguity != null">
+        anony_ambiguity = #{anonyAmbiguity,jdbcType=REAL},
+      </if>
+      <if test="errorLoginTimes != null">
+        error_login_times = #{errorLoginTimes,jdbcType=BIT},
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tipOffTimes != null">
+        tip_off_times = #{tipOffTimes,jdbcType=INTEGER},
+      </if>
+      <if test="shareTimes != null">
+        share_times = #{shareTimes,jdbcType=INTEGER},
+      </if>
+      <if test="vipSearchForbidden != null">
+        vip_search_forbidden = #{vipSearchForbidden,jdbcType=BIT},
+      </if>
+      <if test="vipAtForbidden != null">
+        vip_at_forbidden = #{vipAtForbidden,jdbcType=BIT},
+      </if>
+      <if test="vipShareForbidden != null">
+        vip_share_forbidden = #{vipShareForbidden,jdbcType=BIT},
+      </if>
+      <if test="vipDynamicHomepage != null">
+        vip_dynamic_homepage = #{vipDynamicHomepage,jdbcType=BIT},
+      </if>
+      <if test="genderVisible != null">
+        gender_visible = #{genderVisible,jdbcType=BIT},
+      </if>
+      <if test="online != null">
+        online = #{online,jdbcType=BIT},
+      </if>
+      <if test="vipOnlineVisible != null">
+        vip_online_visible = #{vipOnlineVisible,jdbcType=BIT},
+      </if>
+      <if test="lockExpiredTime != null">
+        lock_expired_time = #{lockExpiredTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.singleMan.model.dsUserExtend">
+    update ds_user_extend
+    set uid = #{uid,jdbcType=INTEGER},
+      email = #{email,jdbcType=VARCHAR},
+      location = #{location,jdbcType=VARCHAR},
+      vip_level = #{vipLevel,jdbcType=BIT},
+      vip_start_time = #{vipStartTime,jdbcType=TIMESTAMP},
+      vip_end_time = #{vipEndTime,jdbcType=TIMESTAMP},
+      viewers = #{viewers,jdbcType=INTEGER},
+      anony_nickname = #{anonyNickname,jdbcType=VARCHAR},
+      anony_ambiguity = #{anonyAmbiguity,jdbcType=REAL},
+      error_login_times = #{errorLoginTimes,jdbcType=BIT},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      tip_off_times = #{tipOffTimes,jdbcType=INTEGER},
+      share_times = #{shareTimes,jdbcType=INTEGER},
+      vip_search_forbidden = #{vipSearchForbidden,jdbcType=BIT},
+      vip_at_forbidden = #{vipAtForbidden,jdbcType=BIT},
+      vip_share_forbidden = #{vipShareForbidden,jdbcType=BIT},
+      vip_dynamic_homepage = #{vipDynamicHomepage,jdbcType=BIT},
+      gender_visible = #{genderVisible,jdbcType=BIT},
+      online = #{online,jdbcType=BIT},
+      vip_online_visible = #{vipOnlineVisible,jdbcType=BIT},
+      lock_expired_time = #{lockExpiredTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

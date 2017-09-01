@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.singleMan.dao.DsUserMapper">
+  <resultMap id="BaseResultMap" type="com.singleMan.model.DsUser">
+    <id column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="phone" jdbcType="CHAR" property="phone" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="gender" jdbcType="BIT" property="gender" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="height" jdbcType="BIT" property="height" />
+    <result column="degree_id" jdbcType="BIT" property="degreeId" />
+    <result column="city_id" jdbcType="SMALLINT" property="cityId" />
+    <result column="album_status" jdbcType="BIT" property="albumStatus" />
+    <result column="wechat" jdbcType="VARCHAR" property="wechat" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="self_desc" jdbcType="VARCHAR" property="selfDesc" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="equip_id" jdbcType="INTEGER" property="equipId" />
+    <result column="credit" jdbcType="BIT" property="credit" />
+    <result column="auth_status" jdbcType="BIT" property="authStatus" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="vip_status" jdbcType="BIT" property="vipStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="status" jdbcType="BIT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    uid, nickname, phone, password, avatar, gender, birthday, height, degree_id, city_id, 
+    album_status, wechat, qq, self_desc, company_name, equip_id, credit, auth_status, 
+    position, vip_status, create_time, update_time, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ds_user
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ds_user
+    where uid = #{uid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.singleMan.model.DsUser">
+    insert into ds_user (uid, nickname, phone, 
+      password, avatar, gender, 
+      birthday, height, degree_id, 
+      city_id, album_status, wechat, 
+      qq, self_desc, company_name, 
+      equip_id, credit, auth_status, 
+      position, vip_status, create_time, 
+      update_time, status)
+    values (#{uid,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, #{phone,jdbcType=CHAR}, 
+      #{password,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, #{gender,jdbcType=BIT}, 
+      #{birthday,jdbcType=TIMESTAMP}, #{height,jdbcType=BIT}, #{degreeId,jdbcType=BIT}, 
+      #{cityId,jdbcType=SMALLINT}, #{albumStatus,jdbcType=BIT}, #{wechat,jdbcType=VARCHAR}, 
+      #{qq,jdbcType=VARCHAR}, #{selfDesc,jdbcType=VARCHAR}, #{companyName,jdbcType=VARCHAR}, 
+      #{equipId,jdbcType=INTEGER}, #{credit,jdbcType=BIT}, #{authStatus,jdbcType=BIT}, 
+      #{position,jdbcType=VARCHAR}, #{vipStatus,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.singleMan.model.DsUser" useGeneratedKeys="true" keyProperty="uid">
+    insert into ds_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="degreeId != null">
+        degree_id,
+      </if>
+      <if test="cityId != null">
+        city_id,
+      </if>
+      <if test="albumStatus != null">
+        album_status,
+      </if>
+      <if test="wechat != null">
+        wechat,
+      </if>
+      <if test="qq != null">
+        qq,
+      </if>
+      <if test="selfDesc != null">
+        self_desc,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="equipId != null">
+        equip_id,
+      </if>
+      <if test="credit != null">
+        credit,
+      </if>
+      <if test="authStatus != null">
+        auth_status,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="vipStatus != null">
+        vip_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=BIT},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=BIT},
+      </if>
+      <if test="degreeId != null">
+        #{degreeId,jdbcType=BIT},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=SMALLINT},
+      </if>
+      <if test="albumStatus != null">
+        #{albumStatus,jdbcType=BIT},
+      </if>
+      <if test="wechat != null">
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="selfDesc != null">
+        #{selfDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="equipId != null">
+        #{equipId,jdbcType=INTEGER},
+      </if>
+      <if test="credit != null">
+        #{credit,jdbcType=BIT},
+      </if>
+      <if test="authStatus != null">
+        #{authStatus,jdbcType=BIT},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="vipStatus != null">
+        #{vipStatus,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.singleMan.model.DsUser">
+    update ds_user
+    <set>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=BIT},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=BIT},
+      </if>
+      <if test="degreeId != null">
+        degree_id = #{degreeId,jdbcType=BIT},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=SMALLINT},
+      </if>
+      <if test="albumStatus != null">
+        album_status = #{albumStatus,jdbcType=BIT},
+      </if>
+      <if test="wechat != null">
+        wechat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="selfDesc != null">
+        self_desc = #{selfDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="equipId != null">
+        equip_id = #{equipId,jdbcType=INTEGER},
+      </if>
+      <if test="credit != null">
+        credit = #{credit,jdbcType=BIT},
+      </if>
+      <if test="authStatus != null">
+        auth_status = #{authStatus,jdbcType=BIT},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="vipStatus != null">
+        vip_status = #{vipStatus,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=BIT},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.singleMan.model.DsUser">
+    update ds_user
+    set nickname = #{nickname,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=CHAR},
+      password = #{password,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=BIT},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      height = #{height,jdbcType=BIT},
+      degree_id = #{degreeId,jdbcType=BIT},
+      city_id = #{cityId,jdbcType=SMALLINT},
+      album_status = #{albumStatus,jdbcType=BIT},
+      wechat = #{wechat,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      self_desc = #{selfDesc,jdbcType=VARCHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      equip_id = #{equipId,jdbcType=INTEGER},
+      credit = #{credit,jdbcType=BIT},
+      auth_status = #{authStatus,jdbcType=BIT},
+      position = #{position,jdbcType=VARCHAR},
+      vip_status = #{vipStatus,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=BIT}
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+</mapper>
